@@ -1,0 +1,34 @@
+---
+title: "Placeholder Post: Machine Learning Pipeline Fundamentals"
+description: "A sample placeholder post demonstrating MDX parsing, frontmatter metadata, and code block formatting."
+date: "2026-11-11"
+tags: ["Machine Learning", "MLOps"]
+cover: "/blog/sample-placeholder-post/cover.webp"
+draft: false
+---
+
+# Placeholder Post: Machine Learning Pipeline Fundamentals
+
+> [!NOTE]
+> This post is a **placeholder** created during setup. No real author content has been written yet. Replace this file with your own article.
+
+## Overview
+
+This is placeholder content designed to verify that the local MDX ingestion, reading time calculation, frontmatter parsing, and syntax highlighting operate properly.
+
+```python
+import numpy as np
+
+def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict[str, float]:
+    """Compute basic evaluation metrics (placeholder example)."""
+    accuracy = float(np.mean(y_true == y_pred))
+    return {"accuracy": accuracy}
+```
+
+## Writing Your Own Posts
+
+To add a new article:
+1. Create a new `.mdx` file in `content/blog/<slug>.mdx`.
+2. Fill in the frontmatter (`title`, `description`, `date`, `tags`, optional `cover`, optional `draft`).
+3. Write your content using standard GitHub-flavored Markdown and MDX components.
+

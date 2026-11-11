@@ -1,0 +1,482 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   Color tokens — light mode (default)
+   Warm editorial palette inspired by the supplied portfolio reference.
+───────────────────────────────────────────── */
+:root {
+  /* Surfaces */
+  --color-bg: #f3ebdd;
+  --color-bg-subtle: #ebe2d4;
+  --color-surface: #fbf7ef;
+
+  /* Text */
+  --color-fg: #2b1f1a;
+  --color-fg-muted: #65584f;
+
+  /* Borders */
+  --color-border: #d7c9b6;
+
+  /* Accent */
+  --color-accent: #426f88;
+  --color-accent-hover: #31586e;
+
+  /* Code block background */
+  --color-code-bg: #1e1e1e;
+  --color-code-fg: #e6e6e6;
+
+  /* Shadows */
+  --shadow-card: 0 2px 10px 0 rgb(43 31 26 / 0.07);
+}
+
+/* ─────────────────────────────────────────────
+   Color tokens — dark mode
+   Applied when <html class="dark"> (next-themes)
+───────────────────────────────────────────── */
+.dark {
+  --color-bg: #211e1b;
+  --color-bg-subtle: #302a25;
+  --color-surface: #292521;
+
+  --color-fg: #f3ebdd;
+  --color-fg-muted: #c4b8aa;
+
+  --color-border: #51463c;
+
+  --color-accent: #4a788f;
+  --color-accent-hover: #d5eafb;
+
+  --color-code-bg: #0f0f0e;
+  --color-code-fg: #ededed;
+
+  --shadow-card: 0 1px 4px 0 rgb(0 0 0 / 0.3);
+}
+
+/* ─────────────────────────────────────────────
+   Base styles
+───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  transition:
+    background-color 200ms ease-out,
+    color 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.home-hero {
+  min-height: 580px;
+  padding-block: 2.5rem 3rem;
+  animation: hero-arrive 420ms ease-out both;
+}
+
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.hero-name {
+  color: #c46a4a;
+}
+
+.hero-art {
+  min-height: 430px;
+  overflow: hidden;
+}
+
+.hero-topography {
+  opacity: 0.4;
+  background: repeating-radial-gradient(ellipse at 53% 53%, transparent 0, transparent 20px, rgb(122 127 82 / 0.42) 21px, transparent 22px, transparent 42px);
+  transform: rotate(-18deg);
+}
+
+.hero-arch {
+  height: 390px;
+  box-shadow: 10px 10px 0 #c46a4a;
+}
+
+.hero-portrait-art {
+  background: linear-gradient(155deg, transparent 35%, rgb(191 221 242 / 0.55) 35% 64%, transparent 64%), radial-gradient(ellipse at 50% 85%, #c46a4a 0 24%, transparent 24.5%);
+}
+
+.hero-person-mark {
+  color: #426f88;
+  font-size: 10rem;
+  text-shadow: 0 5px 0 rgb(43 31 26 / 0.12);
+}
+
+.hero-sun {
+  border: 1px solid rgb(43 31 26 / 0.18);
+}
+
+.hero-code-chip {
+  border-color: var(--color-border);
+}
+
+.project-editorial-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  min-height: 230px;
+  border: 1px solid var(--color-fg);
+  background: var(--color-surface);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.project-editorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgb(43 31 26 / 0.14);
+}
+
+.project-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px 30px 28px;
+}
+
+.project-title {
+  margin: 15px 0 8px;
+  color: var(--color-fg);
+  font-size: clamp(1.8rem, 4vw, 3.3rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.project-title a {
+  color: inherit;
+  text-decoration: none;
+  text-decoration-color: #c46a4a;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.project-title a:hover {
+  text-decoration-line: underline;
+}
+
+.project-summary {
+  max-width: 58ch;
+  margin: 0 0 18px;
+  color: var(--color-fg-muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.project-tags span {
+  display: inline-flex;
+  padding: 5px 10px;
+  border: 1px solid rgb(43 31 26 / 0.4);
+  border-radius: 999px;
+  color: var(--color-fg);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.project-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 25px 28px;
+  border-left: 1px solid var(--color-fg);
+  background: #9d5039;
+  color: #fffaf2;
+}
+
+.project-editorial-card:nth-child(3n + 2) .project-side {
+  background: #56603d;
+}
+
+.project-editorial-card:nth-child(3n) .project-side {
+  background: #426f88;
+}
+
+.project-side-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+.project-status {
+  margin: 8px 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.project-role {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-action-primary,
+.project-action-secondary {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid #fff7eb;
+  border-radius: 999px;
+  color: #fffaf2;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.project-action-primary {
+  border-color: #bfddf2;
+  background: #bfddf2;
+  color: #2b1f1a;
+}
+
+.project-action-primary:hover,
+.project-action-secondary:hover {
+  background: #fffaf2;
+  color: #2b1f1a;
+}
+
+.toolkit-section {
+  padding-block: 3.25rem;
+  border-block: 1px solid var(--color-border);
+}
+
+.toolkit-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.toolkit-group {
+  min-height: 190px;
+  padding: 1.25rem;
+  border: 1px solid var(--color-fg);
+  background: var(--color-surface);
+}
+
+.toolkit-group:nth-child(2) { background: #e5edf0; color: #2b1f1a; }
+.toolkit-group:nth-child(3) { background: #ebcbb9; color: #2b1f1a; }
+.toolkit-group:nth-child(4) { background: #dbdfcc; color: #2b1f1a; }
+
+.toolkit-heading {
+  margin: 0.8rem 0 1.1rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.toolkit-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.toolkit-tags span {
+  display: inline-flex;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid rgb(43 31 26 / 0.35);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.5);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.63rem;
+}
+
+@keyframes hero-arrive {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero { animation: none; }
+  .project-editorial-card,
+  .project-action-primary,
+  .project-action-secondary { transition: none; }
+}
+
+@media (max-width: 639px) {
+  .home-hero { min-height: 0; padding-block: 2rem 3rem; }
+  .hero-art { min-height: 340px; }
+  .hero-arch { height: 315px; }
+  .hero-person-mark { font-size: 8rem; }
+  .project-editorial-card { grid-template-columns: 1fr; }
+  .project-main { padding: 22px 20px 23px; }
+  .project-side { min-height: 150px; border-top: 1px solid var(--color-fg); border-left: 0; padding: 20px; }
+  .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toolkit-group { min-height: 165px; padding: 1rem; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ─────────────────────────────────────────────
+   Shared Prose Style for Articles (AGENTS.md Section 3)
+   Line length ~65-75 characters, readable code blocks
+───────────────────────────────────────────── */
+.prose-portfolio {
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-fg);
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+
+.prose-portfolio h1,
+.prose-portfolio h2,
+.prose-portfolio h3,
+.prose-portfolio h4 {
+  color: var(--color-fg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose-portfolio h1 {
+  font-size: 2.25rem;
+  line-height: 1.25;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.prose-portfolio h2 {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.prose-portfolio h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-portfolio p {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-portfolio a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 150ms ease;
+}
+
+.prose-portfolio a:hover {
+  opacity: 0.85;
+}
+
+.prose-portfolio strong {
+  color: var(--color-fg);
+  font-weight: 600;
+}
+
+.prose-portfolio ul,
+.prose-portfolio ol {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-portfolio ul {
+  list-style-type: disc;
+}
+
+.prose-portfolio ol {
+  list-style-type: decimal;
+}
+
+.prose-portfolio li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-portfolio blockquote {
+  margin: 1.75rem 0;
+  padding: 0.75rem 1.25rem;
+  border-left: 3px solid var(--color-accent);
+  background: var(--color-bg-subtle);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: var(--color-fg-muted);
+  font-size: 0.95rem;
+}
+
+.prose-portfolio hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Inline code */
+.prose-portfolio :not(pre) > code {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875em;
+  background-color: var(--color-bg-subtle);
+  color: var(--color-fg);
+  padding: 0.15em 0.35em;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+}
+
+/* Pre / Code blocks (rehype-pretty-code syntax highlighted) */
+.prose-portfolio pre {
+  margin: 1.75rem 0;
+  padding: 1.25rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-code-bg);
+  color: var(--color-code-fg);
+}
+
+.prose-portfolio pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  color: inherit;
+}
